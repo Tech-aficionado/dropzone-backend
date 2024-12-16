@@ -1,0 +1,5 @@
+DB_USER = "root"
+DB_PASSWORD = "syspassword"
+DB_HOST = "localhost"
+DB_PORT = "3600"
+DB_DATABASE = "dropzone_python"
