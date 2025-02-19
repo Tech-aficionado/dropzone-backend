@@ -9,8 +9,8 @@ try:
         host=DB_HOST,  # Database host address
         database=DB_DATABASE,  # Name of the database
         user=DB_USER,  # Your username
-    autocommit=True,
         password=DB_PASSWORD,  # Your password
+        port=3600,
     )
 
     if connection.is_connected():
@@ -19,7 +19,7 @@ try:
         cursor = connection.cursor()
         cursor.execute(f"USE {DB_DATABASE};")
         record = cursor.fetchone()
-        print(emoji.emojize('Connected to Database \U0001F44D'))
+        print(emoji.emojize("Connected to Database \U0001F44D"))
 
         rows = cursor.fetchall()
         print("Total number of rows in table: ", cursor.rowcount)
@@ -28,7 +28,7 @@ try:
             print(row)
 
 except Error as e:
-    print(emoji.emojize('Error while connecting to MySQL \U0001F621'))
+    print(emoji.emojize("Error while connecting to MySQL \U0001F621"))
 
 
 class DatabaseOperation:
@@ -45,15 +45,15 @@ class DatabaseOperation:
                 # Sample query execution
                 cursor.execute(query, params)
                 rows = cursor.fetchall()
-                
-                
+
                 print("Total number of rows in table: ", cursor.rowcount)
 
                 if cursor.rowcount != 0:
                     return dict(row=cursor.rowcount, detail=rows)
                 else:
                     return dict(row=cursor.rowcount, detail="")
-
+            else:
+                return
         except Error as e:
             print("Error while connecting to MySQL", e)
 

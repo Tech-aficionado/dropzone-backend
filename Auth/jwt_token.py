@@ -7,7 +7,7 @@ SECRET = (
 
 
 def create_access_jwt(data: dict):
-    data["exp"] = datetime.utcnow() + timedelta(days=1)
+    data["exp"] = datetime.utcnow() + timedelta(hours=4)
     data["mode"] = "access_token"
     return jwt.encode(data, SECRET, "HS256")
 
